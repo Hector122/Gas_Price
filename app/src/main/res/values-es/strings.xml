@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Precio Gasolina RD</string>
+    <string name="gas_station">Station</string>
+    <string name="price">Precio</string>
+</resources>
