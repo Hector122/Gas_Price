@@ -52,27 +52,24 @@ public class DashboardActivity extends AppCompatActivity {
      */
     private void initBottomNavigationView() {
         BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelected =
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        Fragment fragment;
-                        switch (item.getItemId()) {
-                            case R.id.nv_price:
-                                fragment = new PriceFragment();
-                                replaceFragment(fragment);
+                item -> {
+                    Fragment fragment;
+                    switch (item.getItemId()) {
+                        case R.id.nv_price:
+                            fragment = new PriceFragment();
+                            DashboardActivity.this.replaceFragment(fragment);
 
-                                toolbar.setTitle(getString(R.string.price));
-                                return true;
+                            toolbar.setTitle(DashboardActivity.this.getString(R.string.price));
+                            return true;
 
-                            case R.id.nv_gas_station:
-                                fragment = new MapFragment();
-                                replaceFragment(fragment);
+                        case R.id.nv_gas_station:
+                            fragment = new MapFragment();
+                            DashboardActivity.this.replaceFragment(fragment);
 
-                                toolbar.setTitle(getString(R.string.gas_station));
-                                return true;
-                        }
-                        return false;
+                            toolbar.setTitle(DashboardActivity.this.getString(R.string.gas_station));
+                            return true;
                     }
+                    return false;
                 };
 
         BottomNavigationView navigationView = findViewById(R.id.bn_dashboard);
