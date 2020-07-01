@@ -16,17 +16,14 @@ import com.android.gaspricerd.R;
 import com.android.gaspricerd.reposiroty.ClientApi;
 import com.android.gaspricerd.reposiroty.ServiceGenerator;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Fragment
+ */
 public class PriceFragment extends Fragment {
     ClientApi clientApi;
 
@@ -61,8 +58,8 @@ public class PriceFragment extends Fragment {
         return view;
     }
 //    /**
-//     * Converts the contents of an InputStream to a String.
-//     */
+     //     * Converts the contents of an InputStream to a String.
+     //     */
 //    private String readStream(InputStream stream) throws IOException {
 //        Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
 //        BufferedReader in = new BufferedReader(reader);

@@ -1,11 +1,8 @@
 package com.android.gaspricerd.reposiroty;
 
-import org.xml.sax.helpers.XMLReaderFactory;
-
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
-import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
@@ -26,6 +23,7 @@ public class ServiceGenerator {
     /**
      * @param serviceClass
      * @param <S>
+     *
      * @return
      */
     public static <S> S createService(Class<S> serviceClass) {
