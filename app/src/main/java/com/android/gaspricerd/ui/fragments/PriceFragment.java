@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.android.gaspricerd.R;
+import com.android.gaspricerd.model.RssFeed;
 import com.android.gaspricerd.reposiroty.ClientApi;
 import com.android.gaspricerd.reposiroty.ServiceGenerator;
 
@@ -25,7 +26,7 @@ import retrofit2.Response;
  * Fragment
  */
 public class PriceFragment extends Fragment {
-    ClientApi clientApi;
+    private ClientApi clientApi;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -40,13 +41,17 @@ public class PriceFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_prices, container, false);
 
+
+        //TODO: remove from view.
         Call<ResponseBody> call = clientApi.getCurrentGasPrice();
         Log.d("URL: " , call.request().url().toString());
+
+
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                TextView textView =  view.findViewById(R.id.txt_test);
-                textView.setText(response.raw().toString());
+
+
             }
 
             @Override
