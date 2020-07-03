@@ -3,14 +3,20 @@ package com.android.gaspricerd.model;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-@Root(name = "rss")
+import java.util.ArrayList;
+
+
 public class RssFeed {
-    @Element(name = "title")
     private String title;
-    @Element(name = "pubDate")
     private String pubDate;
-    @Element(name = "description")
-    private String description;
+    private ArrayList<RssItem> items;
+
+    public RssFeed(String title, String pubDate, ArrayList<RssItem> items) {
+
+        this.title = title;
+        this.pubDate = pubDate;
+        this.items = items;
+    }
 
     public String getTitle() {
         return title;
@@ -20,7 +26,7 @@ public class RssFeed {
         return pubDate;
     }
 
-    public String getDescription() {
-        return description;
+  public ArrayList<RssItem> getItems(){
+        return items;
     }
 }

@@ -1,5 +1,7 @@
 package com.android.gaspricerd.reposiroty;
 
+import com.android.gaspricerd.model.RssFeed;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -15,4 +17,7 @@ public interface ClientApi {
      */
     @GET("combustibleRSS.xml")
     Call<ResponseBody> getCurrentGasPrice();
+
+    @GET("direcciones/combustibles/estadisticas-institucionales")
+    Call<ResponseBody> getLastThreeWeeksGasPrices();
 }

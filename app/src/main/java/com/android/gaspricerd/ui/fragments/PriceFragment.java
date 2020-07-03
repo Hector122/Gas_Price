@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.android.gaspricerd.utils.ParserXmlMic;
 import com.android.gaspricerd.R;
-import com.android.gaspricerd.model.RssFeed;
 import com.android.gaspricerd.reposiroty.ClientApi;
 import com.android.gaspricerd.reposiroty.ServiceGenerator;
 
@@ -27,6 +27,7 @@ import retrofit2.Response;
  */
 public class PriceFragment extends Fragment {
     private ClientApi clientApi;
+    private TextView textView;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -51,6 +52,16 @@ public class PriceFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
+                try {
+                    ParserXmlMic parserXmlMic = new ParserXmlMic();
+                    parserXmlMic.parser(response.body().byteStream());
+                } catch (Exception ex){
+                    ex.printStackTrace();
+                }
+
+
+//                textView = getActivity().findViewById(R.id.txt_test);
+//                textView.setText(response.body().byteStream().toString());
 
             }
 
@@ -62,33 +73,4 @@ public class PriceFragment extends Fragment {
 
         return view;
     }
-//    /**
-     //     * Converts the contents of an InputStream to a String.
-     //     */
-//    private String readStream(InputStream stream) throws IOException {
-//        Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
-//        BufferedReader in = new BufferedReader(reader);
-//        StringBuilder builder = new StringBuilder();
-//
-//        String line;
-//        while ((line = in.readLine()) != null) {
-//            builder.append(line);
-//
-//            //Find the token hash
-//            if (line.contains(STATEFUL_HASH)) {
-//                String[] values = line.split(VALUE_EQUAL);
-//
-//                Pattern pattern = Pattern.compile(REGEX);
-//                Matcher matcher = pattern.matcher(values[1]);
-//
-//                if (matcher.find()) {
-//                    mHashToken = matcher.group(1);
-//                    break;
-//                }
-//            }
-//        }
-//
-//        return builder.toString();
-//    }
-
 }
