@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.android.gaspricerd.R;
+import com.android.gaspricerd.reposiroty.RepositoryImp;
 import com.android.gaspricerd.ui.fragments.MapFragment;
 import com.android.gaspricerd.ui.fragments.PriceFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -16,7 +17,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
  * Container activity class.
  */
 public class DashboardActivity extends AppCompatActivity {
-
     private ActionBar toolbar;
 
     @Override
@@ -28,6 +28,10 @@ public class DashboardActivity extends AppCompatActivity {
         if (toolbar != null) {
             toolbar.setTitle(getString(R.string.app_name));
         }
+
+        //
+        RepositoryImp repositoryImp = new RepositoryImp();
+        repositoryImp.getLastWeekJSON();
 
         // Set initial fragment.
         Fragment fragment = new PriceFragment();

@@ -37,7 +37,8 @@ public class Utils {
             //Find the token hash
             if (line.contains("ArtDataChartDefinition13")) {
                 String[] values = line.split("=");
-                builder.append(values[1]);
+                String jsonObject = values[1];
+                builder.append(jsonObject.substring(0, jsonObject.length()-1));
                 break;
             }
         }
