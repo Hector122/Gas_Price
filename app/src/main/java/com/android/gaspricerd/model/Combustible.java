@@ -1,28 +1,35 @@
 package com.android.gaspricerd.model;
 
-import android.widget.ImageView;
-
 /**
  * POJO Class
  */
 public class Combustible {
     private String mTitle;
-    private ImageView mVariationImage;
+    private int mVariationImageId;
     private double mCurrentPrice;
     private double mLastPrice;
 
+    public Combustible(){
+        super();
+    }
+
+    public Combustible(String title, int imageId, double currentPrice, double lastPrice){
+        mTitle = title;
+        mVariationImageId = imageId;
+        mCurrentPrice = currentPrice;
+        mLastPrice = lastPrice;
+    }
 
     public String getTitle() {
         return mTitle;
     }
 
-    public ImageView getImageView() {
-        return mVariationImage;
+    public int getImageViewId() {
+        return mVariationImageId;
     }
 
-    public void setImageView(ImageView imageView) {
-        this.mVariationImage = imageView;
-
+    public void setImageView(int imageViewId) {
+        this.mVariationImageId = imageViewId;
     }
 
     public double getCurrentPrice() {

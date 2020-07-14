@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.android.gaspricerd.R;
-import com.android.gaspricerd.reposiroty.ClientApi;
 
 public class MapFragment extends Fragment {
 
@@ -20,4 +19,6 @@ public class MapFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_map, container, false);
     }
+
+
 }

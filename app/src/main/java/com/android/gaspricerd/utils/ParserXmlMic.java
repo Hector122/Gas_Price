@@ -1,10 +1,7 @@
 package com.android.gaspricerd.utils;
 
-import android.util.Log;
-
-import com.android.gaspricerd.model.Combustible;
-import com.android.gaspricerd.model.RssFeed;
-import com.android.gaspricerd.model.RssItem;
+import com.android.gaspricerd.model.rss.RssFeed;
+import com.android.gaspricerd.model.rss.RssItem;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -14,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class that parse the xml from the MIC.

@@ -1,7 +1,4 @@
-package com.android.gaspricerd.model;
-
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
+package com.android.gaspricerd.model.rss;
 
 import java.util.ArrayList;
 

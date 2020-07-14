@@ -1,4 +1,4 @@
-package com.android.gaspricerd.model;
+package com.android.gaspricerd.model.rss;
 
 public class RssItem {
     private String description;
