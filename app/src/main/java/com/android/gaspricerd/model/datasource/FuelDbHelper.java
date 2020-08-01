@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class FuelDbHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "";
+    public static final String DATABASE_NAME = "Fuel.db";
     public static final int DATABASE_VERSION = 1;
 
     public FuelDbHelper(Context context) {
@@ -14,8 +14,8 @@ public class FuelDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        final String SQL_CREATE_ENTRIES = "CREATE TABLE " + FuelContract.FuelEntry.TABLE_NAME + "(" +
-                FuelContract.FuelEntry._ID + " PRIMARY KEY AUTOINCREMENT, " +
+        final String SQL_CREATE_ENTRIES = "CREATE TABLE " + FuelContract.FuelEntry.TABLE_NAME + " (" +
+                FuelContract.FuelEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 FuelContract.FuelEntry.COLUMN_NAME_TITLE + " TEXT NOT NULL, " +
                 FuelContract.FuelEntry.COLUMN_NAME_PRICE + " NUMERIC(4,2) NOT NULL, " +
                 FuelContract.FuelEntry.COLUMN_NAME_PUB_DATE + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP UNIQUE)";
