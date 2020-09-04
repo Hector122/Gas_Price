@@ -8,13 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.android.gaspricerd.R;
-import com.android.gaspricerd.reposiroty.RepositoryImp;
 import com.android.gaspricerd.ui.fragments.MapFragment;
 import com.android.gaspricerd.ui.fragments.PriceFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
- * Container activity class.
+ * Container main activity class.
  */
 public class DashboardActivity extends AppCompatActivity {
     private ActionBar toolbar;
@@ -29,13 +28,8 @@ public class DashboardActivity extends AppCompatActivity {
             toolbar.setTitle(getString(R.string.app_name));
         }
 
-        //
-        RepositoryImp repositoryImp = new RepositoryImp();
-        repositoryImp.getLastWeekJSON();
-
         // Set initial fragment.
-        Fragment fragment = new PriceFragment();
-        replaceFragment(fragment);
+        replaceFragment(new PriceFragment());
 
         initBottomNavigationView();
     }
@@ -48,17 +42,16 @@ public class DashboardActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.nv_price:
+                    toolbar.setTitle(getString(R.string.price));
+
                     fragment = new PriceFragment();
                     replaceFragment(fragment);
-
-                    toolbar.setTitle(DashboardActivity.this.getString(R.string.price));
                     return true;
-
                 case R.id.nv_gas_station:
+                    toolbar.setTitle(getString(R.string.gas_station));
+
                     fragment = new MapFragment();
                     replaceFragment(fragment);
-
-                    toolbar.setTitle(DashboardActivity.this.getString(R.string.gas_station));
                     return true;
             }
             return false;

@@ -15,16 +15,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.gaspricerd.R;
 import com.android.gaspricerd.model.Combustible;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Adapter class for list prices.
  */
 public class CombustiblePricesAdapter extends RecyclerView.Adapter<CombustiblePricesAdapter.ViewHolder> {
-    private ArrayList<Combustible> combustibles;
+    private List<Combustible> combustibles;
     private Context context;
 
-    public CombustiblePricesAdapter(Context context, ArrayList<Combustible> combustibles) {
+    public CombustiblePricesAdapter(Context context, List<Combustible> combustibles) {
         this.context = context;
         this.combustibles = combustibles;
     }

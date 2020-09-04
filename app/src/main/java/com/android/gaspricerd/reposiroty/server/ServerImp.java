@@ -1,4 +1,4 @@
-package com.android.gaspricerd.reposiroty;
+package com.android.gaspricerd.reposiroty.server;
 
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -17,17 +17,29 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RepositoryImp {
-    private ClientApi mClientApi;
+/**
+ * Implementation class of the services client.
+ */
+public class ServerImp {
+    private final ClientApi mClientApi;
 
-    public RepositoryImp() {
+    /**
+     * Constructor.
+     */
+    public ServerImp() {
         mClientApi = ServiceGenerator.createService(ClientApi.class);
     }
 
+    /**
+     * Get the current gas price data for the current week.
+     *
+     * @param response {@link Response}
+     */
     public void getRssForMic(Response<ResponseBody> response) {
         Call<ResponseBody> call = mClientApi.getCurrentGasPrice();
         Log.d("URL: ", call.request().url().toString());
 
+        // sync task
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -48,7 +60,9 @@ public class RepositoryImp {
         });
     }
 
-
+    /**
+     * Get the JSON data with the list of the last 3 week prices.
+     */
     public void getLastWeekJSON() {
         HandlerThread handlerThread = new HandlerThread("new_tread");
         handlerThread.start();
@@ -60,9 +74,7 @@ public class RepositoryImp {
 
                 Response<ResponseBody> response = call.execute();
                 if (response.body() != null) {
-                    String json = Utils.readStream(response.body().byteStream());
-                    DataSetHolder holder = new Gson().fromJson(json, DataSetHolder.class);
-                    holder.getCategories();
+                    handlerRepose(response.body());
                 }
 
             } catch (IOException ioException) {
@@ -74,6 +86,10 @@ public class RepositoryImp {
         handler.post(runnable);
     }
 
+    /**
+     * TODO:
+     * @param json
+     */
     public void getLastWeekJSON(String json) {
         Call<ResponseBody> call = mClientApi.getLastThreeWeeksGasPrices();
         Log.d("URL: ", call.request().url().toString());
@@ -83,11 +99,9 @@ public class RepositoryImp {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.body() != null) {
                     try {
-                        String json = Utils.readStream(response.body().byteStream());
-                        DataSetHolder holder = new Gson().fromJson(json, DataSetHolder.class);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                        handlerRepose(response.body());
+                    } catch (IOException exception) {
+                        exception.printStackTrace();
                     }
                 }
             }
@@ -97,5 +111,17 @@ public class RepositoryImp {
 
             }
         });
+    }
+
+    /**
+     * Handler server response.
+     *
+     * @param responseBody
+     * @throws IOException
+     */
+    private void handlerRepose(ResponseBody responseBody) throws IOException {
+        String json = Utils.readStream(responseBody.byteStream());
+        DataSetHolder holder = new Gson().fromJson(json, DataSetHolder.class);
+        holder.getCategories();
     }
 }

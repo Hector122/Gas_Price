@@ -1,13 +1,21 @@
-package com.android.gaspricerd.model.datasource;
+package com.android.gaspricerd.reposiroty.datasource;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * Sql lite helper class.
+ */
 public class FuelDbHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Fuel.db";
     public static final int DATABASE_VERSION = 1;
 
+    /**
+     * Constructor
+     *
+     * @param context View context.
+     */
     public FuelDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -18,7 +26,7 @@ public class FuelDbHelper extends SQLiteOpenHelper {
                 FuelContract.FuelEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 FuelContract.FuelEntry.COLUMN_NAME_TITLE + " TEXT NOT NULL, " +
                 FuelContract.FuelEntry.COLUMN_NAME_PRICE + " NUMERIC(4,2) NOT NULL, " +
-                FuelContract.FuelEntry.COLUMN_NAME_PUB_DATE + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP UNIQUE)";
+                FuelContract.FuelEntry.COLUMN_NAME_PUB_DATE + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
 
         sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES);
     }

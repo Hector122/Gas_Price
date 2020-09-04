@@ -1,4 +1,4 @@
-package com.android.gaspricerd.reposiroty;
+package com.android.gaspricerd.reposiroty.server;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

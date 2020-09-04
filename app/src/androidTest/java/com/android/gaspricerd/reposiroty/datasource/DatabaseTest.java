@@ -1,4 +1,4 @@
-package com.android.gaspricerd.model.datasource;
+package com.android.gaspricerd.reposiroty.datasource;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -102,7 +102,7 @@ public class DatabaseTest {
      * incrementing row IDs.
      * @throws Exception in case the constructor hasn't been implemented yet
      */
-    //@Test
+    @Test
     public void autoincrement_test() throws Exception{
         /* First, let's ensure we have some values in our table initially */
         insert_single_record_test();
