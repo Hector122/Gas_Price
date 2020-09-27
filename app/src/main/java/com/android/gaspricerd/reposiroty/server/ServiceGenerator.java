@@ -13,6 +13,8 @@ public class ServiceGenerator {
     private static final String BASE_URL = "https://micm.gob.do/";
     private static final int TIME_OUT = 10;
 
+
+//Retrofit initializer.
     private final static OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder()
             .writeTimeout(TIME_OUT, TimeUnit.SECONDS);
 

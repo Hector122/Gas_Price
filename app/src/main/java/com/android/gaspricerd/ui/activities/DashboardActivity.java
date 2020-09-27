@@ -39,19 +39,15 @@ public class DashboardActivity extends AppCompatActivity {
      */
     private void initBottomNavigationView() {
         BottomNavigationView.OnNavigationItemSelectedListener onItemSelected = item -> {
-            Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.nv_price:
                     toolbar.setTitle(getString(R.string.price));
-
-                    fragment = new PriceFragment();
-                    replaceFragment(fragment);
+                    replaceFragment(new PriceFragment());
                     return true;
+
                 case R.id.nv_gas_station:
                     toolbar.setTitle(getString(R.string.gas_station));
-
-                    fragment = new MapFragment();
-                    replaceFragment(fragment);
+                    replaceFragment( new MapFragment());
                     return true;
             }
             return false;

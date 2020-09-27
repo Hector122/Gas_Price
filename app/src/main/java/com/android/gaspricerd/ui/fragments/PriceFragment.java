@@ -24,12 +24,6 @@ import java.util.List;
  */
 public class PriceFragment extends Fragment {
 
-
-//    @Override
-//    public void onAttach(@NonNull Context context) {
-//        super.onAttach(context);
-//    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -45,18 +39,12 @@ public class PriceFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
     /**
      * Set the recycler and initializer the adapter items.
      *
      * @param view         layout view to show the list of item.
      * @param combustibles  List of combustibles data.
      */
-
     private void setAdapter(View view, List<Combustible> combustibles) {
         RecyclerView recyclerView = view.findViewById(R.id.recycle_view_prices);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
