@@ -1,4 +1,4 @@
-package com.android.gaspricerd.ui.fragments;
+package com.android.gaspricerd.prices;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.gaspricerd.R;
 import com.android.gaspricerd.model.Combustible;
-import com.android.gaspricerd.ui.adapters.CombustiblePricesAdapter;
-import com.android.gaspricerd.ui.models.PriceViewModel;
 
 import java.util.List;
 
@@ -24,11 +22,20 @@ import java.util.List;
  */
 public class PriceFragment extends Fragment {
 
+    public static PriceFragment newInstance() {
+        return new PriceFragment();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_prices, container, false);
+       return inflater.inflate(R.layout.fragment_prices, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         PriceViewModel priceViewModel = new ViewModelProvider(this).get(PriceViewModel.class);
         priceViewModel.getCombustibles().observe(getViewLifecycleOwner(), combustibles -> {
@@ -36,14 +43,15 @@ public class PriceFragment extends Fragment {
             setAdapter(view, combustibles);
         });
 
-        return view;
+
+        priceViewModel.getCombustibles();
     }
 
     /**
      * Set the recycler and initializer the adapter items.
      *
      * @param view         layout view to show the list of item.
-     * @param combustibles  List of combustibles data.
+     * @param combustibles List of combustibles data.
      */
     private void setAdapter(View view, List<Combustible> combustibles) {
         RecyclerView recyclerView = view.findViewById(R.id.recycle_view_prices);

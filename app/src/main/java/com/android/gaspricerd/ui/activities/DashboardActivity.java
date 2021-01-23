@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.android.gaspricerd.R;
-import com.android.gaspricerd.ui.fragments.MapFragment;
-import com.android.gaspricerd.ui.fragments.PriceFragment;
+import com.android.gaspricerd.map.MapFragment;
+import com.android.gaspricerd.prices.PriceFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
@@ -42,7 +42,7 @@ public class DashboardActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.nv_price:
                     toolbar.setTitle(getString(R.string.price));
-                    replaceFragment(new PriceFragment());
+                    replaceFragment(PriceFragment.newInstance());
                     return true;
 
                 case R.id.nv_gas_station:

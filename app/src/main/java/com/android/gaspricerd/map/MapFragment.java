@@ -1,4 +1,4 @@
-package com.android.gaspricerd.ui.fragments;
+package com.android.gaspricerd.map;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

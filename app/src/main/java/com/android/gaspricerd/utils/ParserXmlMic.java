@@ -1,7 +1,7 @@
 package com.android.gaspricerd.utils;
 
-import com.android.gaspricerd.model.rss.RssFeed;
-import com.android.gaspricerd.model.rss.RssItem;
+import com.android.gaspricerd.rss.RssFeed;
+import com.android.gaspricerd.rss.RssItem;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

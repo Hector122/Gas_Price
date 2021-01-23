@@ -1,4 +1,4 @@
-package com.android.gaspricerd.ui.adapters;
+package com.android.gaspricerd.prices;
 
 import android.content.Context;
 import android.view.LayoutInflater;

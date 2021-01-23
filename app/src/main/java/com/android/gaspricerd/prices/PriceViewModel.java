@@ -1,4 +1,4 @@
-package com.android.gaspricerd.ui.models;
+package com.android.gaspricerd.prices;
 
 import android.app.Application;
 import android.content.ContentValues;
@@ -41,6 +41,7 @@ public class PriceViewModel extends AndroidViewModel {
     public LiveData<List<Combustible>> getCombustibles() {
         if (combustibles == null) {
             combustibles = new MutableLiveData<>();
+
             loadCombustiblesPrices();
         }
         return combustibles;
